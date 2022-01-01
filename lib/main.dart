@@ -32,9 +32,15 @@ class _RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
   final _biggerFont = const TextStyle(fontSize: 18.0);
   int _counter = 0;
+  String _type = '偶数';
   void _incrementCount() {
     setState(() {
       _counter++;
+      if (_counter % 2 == 0) {
+        _type = '偶数';
+      } else {
+        _type = '奇数';
+      }
     });
   }
 
@@ -49,8 +55,8 @@ class _RandomWordsState extends State<RandomWords> {
       ),
       body: Column(
         children: [
-          Text('$_counter'),
-          Text('BBBBB'),
+          if(_counter % 2 == 0)Text('$_counter'),
+          Text('$_type',style: TextStyle(fontSize: 30, color: Colors.red),),
           TextButton(onPressed: () => {print('ボタンが押された')}, child: Text('更新')),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
