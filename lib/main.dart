@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter_application_1/TestPage1.dart';
+import 'package:flutter_application_1/Async.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,6 +38,7 @@ class _RandomWordsState extends State<RandomWords> {
   void _incrementCount() {
     setState(() {
       _counter++;
+      Async().asynctest4(); // 2-4も同様にここで呼び出す
       if (_counter % 2 == 0) {
         _type = '偶数';
       } else {
@@ -49,42 +51,41 @@ class _RandomWordsState extends State<RandomWords> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ナビnバー'),
+        title: const Text('ナビバー'),
       ),
       drawer: Drawer(
         child: Center(child: Text('Drawer')),
       ),
-      // body: Column(
-      //   children: [
-      //     if (_counter % 2 == 0) Text('$_counter'),
-      //     Text(
-      //       '$_type',
-      //       style: TextStyle(fontSize: 30, color: Colors.red),
-      //     ),
-      //     TextButton(onPressed: () => {print('ボタンが押された')}, child: Text('更新')),
-      //     Row(
-      //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //       children: [
-      //         Icon(
-      //           Icons.favorite,
-      //           color: Colors.pink,
-      //           size: 24.0,
-      //         ),
-      //         Icon(
-      //           Icons.audiotrack,
-      //           color: Colors.green,
-      //           size: 30.0,
-      //         ),
-      //         Icon(
-      //           Icons.beach_access,
-      //           color: Colors.blue,
-      //           size: 36.0,
-      //         )
-      //       ],
-      //     ),
-      //   ],
-      // ),
-      body: Test1(),
+      body: Column(
+        children: [
+          if (_counter % 2 == 0) Text('$_counter'),
+          Text(
+            '$_type',
+            style: TextStyle(fontSize: 30, color: Colors.red),
+          ),
+          TextButton(onPressed: () => {print('ボタンが押された')}, child: Text('更新')),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(
+                Icons.favorite,
+                color: Colors.pink,
+                size: 24.0,
+              ),
+              Icon(
+                Icons.audiotrack,
+                color: Colors.green,
+                size: 30.0,
+              ),
+              Icon(
+                Icons.beach_access,
+                color: Colors.blue,
+                size: 36.0,
+              )
+            ],
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
           onPressed: () => {_incrementCount()}, child: Icon(Icons.timer)),
     );
