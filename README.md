@@ -18,3 +18,4 @@ samples, guidance on mobile development, and a full API reference
 
 ## メモ
 - [flutter初回インプットわかりやすい人のサイト](https://zenn.dev/kazutxt/books/flutter_practice_introduction/viewer/beginner_package)
+- [Flutter vs Native vs React-Native: Examining performance](https://medium.com/swlh/flutter-vs-native-vs-react-native-examining-performance-31338f081980)
